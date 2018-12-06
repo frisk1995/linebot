@@ -6,21 +6,26 @@ const connection = mysql.createConnection({
   host : 'localhost',
   user : 'root',
   password : 'Kojima#1995',
-  database: 'test'
+  database: 'macircle'
 });
 
 // 接続
 connection.connect();
 
 // userdataの取得
-connection.query('SELECT * from userdata;', function (err, rows, fields) {
+
+const sql = "select id,date,music.title,name from attend join music on attend.titleId = music.titleId;";
+
+connection.query(sql, function (err, rows, fields) {
   if (err) { console.log('err: ' + err); }
 
+  console.log('date: ' + rows[0].date);
+  console.log('title: ' + rows[0].title);
   console.log('name: ' + rows[0].name);
-  console.log('id: ' + rows[0].id);
 
 });
 
+/*
 // userdataのカラムを取得
 connection.query('SHOW COLUMNS FROM userdata;', function (err, rows, fields) {
   if (err) { console.log('err: ' + err); }
@@ -28,6 +33,7 @@ connection.query('SHOW COLUMNS FROM userdata;', function (err, rows, fields) {
   console.log(rows[0].Field);
   console.log(rows[1].Field);
 });
+*/
 
 // 接続終了
 connection.end();
