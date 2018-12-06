@@ -18,7 +18,7 @@ desc music;
 
 create table attend(
 id int(5) auto_increment primary key,
-date date not null,
+date varchar(255) not null,
 titleId int(5) not null,
 name varchar(255) not null,
 partId int(5) not null,
@@ -35,4 +35,5 @@ insert into part(part) values('ボーカル'),('ギター'),('ベース'),('ド�
 insert into music(title,artist) values('チェリー','スピッツ'),('リライト','アジカン'),('風吹けば恋','チャットモンチー'),('シルエット','KANA-BOON'),('アボカド','yonige'),('ファンファーレ','sumika'),('真赤','My hair is bad');
 
 
-insert into attend(date,titleId,name,partId) values('2018/12/22',7,'とっしー',2);
+insert into attend(date,titleId,name,partId) values('2018年12月22日',4,'まさる',1);
+insert into attend(date,titleId,name,partId) values('2018年12月22日',7,'とっしー',2);
