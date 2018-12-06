@@ -1,5 +1,5 @@
-create database part;
-create database title;
+create database macircle;
+use macircle;
 
 create table part(
 partId int(5) auto_increment primary key,
