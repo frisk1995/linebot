@@ -1,6 +1,8 @@
 # Read Me
 ## Tasks
  - イベント日時用DB作成
+## 参考URL
+http://oasobi-program.hatenadiary.jp/entry/2017/04/15/094924
 ## Linebotの機能
 ※実装可能かどうかは置いておいて、欲しい機能
  - スタジオイベントの表示
