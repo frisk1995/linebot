@@ -1,6 +1,7 @@
 # Read Me
 ## Tasks
  - イベント日時用DB作成
+ - 結果表示のフォーマットを決める
 ## 参考URL
 http://oasobi-program.hatenadiary.jp/entry/2017/04/15/094924
 ## Linebotの機能
