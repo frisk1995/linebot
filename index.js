@@ -1,5 +1,4 @@
 //グローバル変数
-var name;
 
 // モジュールのインポート
 const server = require("express")();
@@ -53,34 +52,11 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
             if (event.message.text == "参加者を確認"){
                 events_processed.push(bot.replyMessage(event.replyToken, {
                   type: "text",
-                  text: "名前:" + callSql()
+                  text: callSql()
                 }));
             }
         }
     });
-    function callSql(){
-      const mysql = require('mysql');
-      // MySQLとのコネクションの作成
-      const connection = mysql.createConnection({
-        host : 'us-cdbr-iron-east-01.cleardb.net',
-        user : 'b7131fe3a57bcc',
-        password : '0c65381b',
-        database: 'heroku_91674c0692dc4e7'
-      });
-      // 接続
-      connection.connect();
-      // userdataの取得
-      const sql = "select * from test";
-
-      connection.query(sql, function (err, rows, fields) {
-        if (err) { console.log('err: ' + err); }
-            name = rows[0].name;
-            console.log(name);
-            console.log(rows[0].name);
-      });
-      connection.end();
-    }
-
     // すべてのイベント処理が終了したら何個のイベントが処理されたか出力。
     Promise.all(events_processed).then(
         (response) => {
@@ -88,3 +64,27 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
         }
     );
 });
+
+function callSql() {
+  let name;
+  const mysql = require('mysql');
+  // MySQLとのコネクションの作成
+  const connection = mysql.createConnection({
+    host : 'us-cdbr-iron-east-01.cleardb.net',
+    user : 'b7131fe3a57bcc',
+    password : '0c65381b',
+    database: 'heroku_91674c0692dc4e7'
+  });
+  // 接続
+  connection.connect();
+  // userdataの取得
+  const sql = "select * from test";
+
+  connection.query(sql, function (err, rows, fields) {
+    if (err) { console.log('err: ' + err); }
+        name = rows[0].name;
+        console.log(name);
+  });
+  connection.end();
+  return name;
+}
