@@ -1,4 +1,5 @@
 //グローバル変数
+var line_name;
 
 // モジュールのインポート
 const server = require("express")();
@@ -31,7 +32,8 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
     req.body.events.forEach((event) => {
         // この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
         if (event.type == "message" && event.message.type == "text"){
-            // event.message.test　→　受信メッセージ
+            callSql();
+            // event.message.text　→　受信メッセージ
             // 曲を選択
             if (event.message.text == "曲を選択"){
                 // replyMessage()で返信し、そのプロミスをevents_processedに追加。
@@ -50,9 +52,10 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
             }
             // 参加者を確認
             if (event.message.text == "参加者を確認"){
+                callSql();
                 events_processed.push(bot.replyMessage(event.replyToken, {
                   type: "text",
-                  text: callSql()
+                  text: "名前:" + line_name + "\n パート:" + "test"
                 }));
             }
         }
@@ -65,8 +68,8 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
     );
 });
 
+// function defined-------------------------------------------------------------
 function callSql() {
-  let name;
   const mysql = require('mysql');
   // MySQLとのコネクションの作成
   const connection = mysql.createConnection({
@@ -82,9 +85,9 @@ function callSql() {
 
   connection.query(sql, function (err, rows, fields) {
     if (err) { console.log('err: ' + err); }
-        name = rows[0].name;
-        console.log(name);
+    line_name = rows[0].name;
+    return line_name;
   });
   connection.end();
-  return name;
+  return line_name;
 }
