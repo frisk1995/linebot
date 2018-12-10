@@ -51,17 +51,15 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
             }
             // 参加者を確認
             if (event.message.text == "参加者を確認"){
-                callSql();
                 events_processed.push(bot.replyMessage(event.replyToken, {
                   type: "text",
-                  text: "名前:"
+                  text: "名前:" + callSql()
                 }));
             }
         }
     });
     function callSql(){
       const mysql = require('mysql');
-
       // MySQLとのコネクションの作成
       const connection = mysql.createConnection({
         host : 'us-cdbr-iron-east-01.cleardb.net',
@@ -69,12 +67,9 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
         password : '0c65381b',
         database: 'heroku_91674c0692dc4e7'
       });
-
       // 接続
       connection.connect();
-
       // userdataの取得
-
       const sql = "select * from test";
 
       connection.query(sql, function (err, rows, fields) {
@@ -84,7 +79,6 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
             console.log(rows[0].name);
       });
       connection.end();
-      return name;
     }
 
     // すべてのイベント処理が終了したら何個のイベントが処理されたか出力。
