@@ -1,4 +1,5 @@
 //グローバル変数
+var name;
 
 // モジュールのインポート
 const server = require("express")();
@@ -50,18 +51,17 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
             }
             // 参加者を確認
             if (event.message.text == "参加者を確認"){
-                // replyMessage()で返信し、そのプロミスをevents_processedに追加。
-
+                callSql();
                 events_processed.push(bot.replyMessage(event.replyToken, {
                   type: "text",
-                  text: "名前:" + callSql()
+                  text: "名前:"
                 }));
             }
         }
     });
     function callSql(){
       const mysql = require('mysql');
-      var name = '';
+
       // MySQLとのコネクションの作成
       const connection = mysql.createConnection({
         host : 'us-cdbr-iron-east-01.cleardb.net',
@@ -80,6 +80,8 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
       connection.query(sql, function (err, rows, fields) {
         if (err) { console.log('err: ' + err); }
             name = rows[0].name;
+            console.log(name);
+            console.log(rows[0].name);
       });
       connection.end();
       return name;
