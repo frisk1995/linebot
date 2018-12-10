@@ -1,8 +1,4 @@
 //グローバル変数
-var date;
-var title;
-var name;
-var part;
 
 // モジュールのインポート
 const server = require("express")();
@@ -55,31 +51,23 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
             // 参加者を確認
             if (event.message.text == "参加者を確認"){
                 // replyMessage()で返信し、そのプロミスをevents_processedに追加。
-                callSql();
+
                 events_processed.push(bot.replyMessage(event.replyToken, {
                   type: "text",
-                  text: "名前:" + name
-                }));
-                events_processed.push(bot.replyMessage(event.replyToken, {
-                  type: "text",
-                  text: "曲:" + title
-                }));
-                events_processed.push(bot.replyMessage(event.replyToken, {
-                  type: "text",
-                  text: "パート:" + part
+                  text: "名前:" + callSql()
                 }));
             }
         }
     });
     function callSql(){
       const mysql = require('mysql');
-
+      var name = '';
       // MySQLとのコネクションの作成
       const connection = mysql.createConnection({
-        host : 'localhost',
-        user : 'root',
-        password : 'Kojima#1995',
-        database: 'macircle'
+        host : 'us-cdbr-iron-east-01.cleardb.net',
+        user : 'b7131fe3a57bcc',
+        password : '0c65381b',
+        database: 'heroku_91674c0692dc4e7'
       });
 
       // 接続
@@ -87,16 +75,14 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
 
       // userdataの取得
 
-      const sql = "select id,date,music.title,name from attend join music on attend.titleId = music.titleId;";
+      const sql = "select * from test";
 
       connection.query(sql, function (err, rows, fields) {
         if (err) { console.log('err: ' + err); }
-
-        date = rows[0].date;
-        title = rows[0].title;
-        name = rows[0].name;
-      });      // 接続終了
+            name = rows[0].name;
+      });
       connection.end();
+      return name;
     }
 
     // すべてのイベント処理が終了したら何個のイベントが処理されたか出力。
