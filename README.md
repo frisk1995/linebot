@@ -44,6 +44,20 @@ http://oasobi-program.hatenadiary.jp/entry/2017/04/15/094924
 | 4 | ドラム |
 | 5 | キーボード |
 
+|titleId|title|atrtist|
+----|----|----
+| 1 | チェリー | スピッツ
+| 2 | リライト | アジカン
+| 3 | 風吹けば恋 | チャットモンチー
+| 4 | シルエット | KANA-BOON
+| 5 | アボカド | yonige
+| 6 | ファンファーレ | sumika
+| 7 | 真赤 | My hair is bad
+
+|eventId|eventdate|place|
+----|----|----
+| 1 | 2018年12月22日 | スタジオノア-秋葉原店|
+| 2 | 2018年1月10日 | スタジオノア-秋葉原店|
 
 
 
