@@ -4,7 +4,8 @@
  - 結果表示のフォーマットを決める
 ## 参考URL
 http://oasobi-program.hatenadiary.jp/entry/2017/04/15/094924  
-https://dev.classmethod.jp/etc/line-messaging-api/
+https://dev.classmethod.jp/etc/line-messaging-api/  
+https://dev.classmethod.jp/etc/line-messaging-api-flex-message/
 ## Linebotの機能
 ※実装可能かどうかは置いておいて、欲しい機能
  - スタジオイベントの表示
