@@ -3,7 +3,7 @@
  - イベント日時用DB作成
  - 結果表示のフォーマットを決める
 ## 参考URL
-http://oasobi-program.hatenadiary.jp/entry/2017/04/15/094924
+http://oasobi-program.hatenadiary.jp/entry/2017/04/15/094924  
 https://dev.classmethod.jp/etc/line-messaging-api/
 ## Linebotの機能
 ※実装可能かどうかは置いておいて、欲しい機能
