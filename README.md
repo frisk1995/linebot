@@ -65,8 +65,6 @@ https://qiita.com/acro5piano/items/55d18983a6a33657cc4d
 |eventId|eventdate|place|
 ----|----|----
 | 1 | 2018年12月22日 | スタジオノア-秋葉原店|
-| 2 | 2018年1月10日 | スタジオノア-秋葉原店|
-
 
 |id|eventId|titleId|name|partId|
 ----|----|----|----|----
