@@ -15,6 +15,7 @@ http://oasobi-program.hatenadiary.jp/entry/2017/04/15/094924
 https://dev.classmethod.jp/etc/line-messaging-api/  
 https://dev.classmethod.jp/etc/line-messaging-api-flex-message/  
 https://qiita.com/verhichi/items/350d6631495ef8aea652  
+https://qiita.com/acro5piano/items/55d18983a6a33657cc4d  
 
 ## Linebotの機能
 ※実装可能かどうかは置いておいて、欲しい機能
