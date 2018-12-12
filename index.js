@@ -83,6 +83,7 @@ function callSql() {
   // userdataの取得
   const sql = "select * from test";
 
+    // functionの文字列いらないかも？
   connection.query(sql, function (err, rows, fields) {
     if (err) { console.log('err: ' + err); }
     line_name = rows[0].name;
